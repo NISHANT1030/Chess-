@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blue & White Chess</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <h1>Blue & White Chess</h1>
+
+      <div class="controls">
+        <label class="mode">
+          Mode:
+          <select id="modeSelect" title="Choose who the AI plays">
+            <option value="hvh">Human vs Human</option>
+            <option value="ai-black">Human (White) vs AI (Black)</option>
+            <option value="ai-white">AI (White) vs Human (Black)</option>
+          </select>
+        </label>
+
+        <button id="resetBtn" title="Restart the game">⟲ Reset</button>
+        <button id="flipBtn" class="secondary" title="Flip the board">⇅ Flip</button>
+        <button id="chatBtn" class="accent" title="Open chat">💬 Chat Online</button>
+      </div>
+    </div>
+
+    <div class="status" id="status">White to move</div>
+
+    <div class="board-wrap">
+      <div id="chessboard" aria-label="Chessboard" role="grid"></div>
+
+      <!-- Optional coordinates overlay -->
+      <div class="coords" id="coords"></div>
+
+      <!-- Promotion dialog -->
+      <div id="promotion-dialog" class="hidden" aria-modal="true" role="dialog">
+        <div class="promo-card">
+          <div class="promo-title">Promote pawn</div>
+          <div class="promo-grid">
+            <button data-piece="q" title="Queen">♛</button>
+            <button data-piece="r" title="Rook">♜</button>
+            <button data-piece="b" title="Bishop">♝</button>
+            <button data-piece="n" title="Knight">♞</button>
+          </div>
+          <div class="promo-hint">Choose a piece to promote to.</div>
+        </div>
+      </div>
+
+      <!-- Chat panel -->
+      <aside id="chatPanel" class="chat hidden" aria-live="polite">
+        <div class="chat-header">
+          <strong>Chat</strong>
+          <button id="chatClose" title="Close chat">✕</button>
+        </div>
+        <div id="chatMessages" class="chat-messages"></div>
+        <form id="chatForm" class="chat-form">
+          <input id="chatInput" type="text" placeholder="Type a message…" autocomplete="off" />
+          <button type="submit">Send</button>
+        </form>
+      </aside>
+    </div>
+  </div>
+
+  <script src="chess.js"></script>
+</body>
+</html>
